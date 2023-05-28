@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript CLock</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
+</head>
+<body onload="startTime()">
+
+<div class="clock">
+    <h2>JavaScript Clock</h2>
+
+<div id="txt"></div>
+</div>
+
+<script>
+function startTime() {
+  const today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+  let ampm = h >= 12 ? 'PM' : 'AM'; // Check AM or PM
+
+  // converting to 12 hours format
+  h = h % 12;
+  h = h ? h : 12; // If hour is 0, covert it to 12
+
+  m = checkTime(m);
+  s = checkTime(s);
+  
+  // Displaying time with AM and PM
+  document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s + " " + ampm;
+  
+  setTimeout(startTime, 1000);
+}
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+</script>
+
+</body>
+</html>
